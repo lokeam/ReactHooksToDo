@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
+import uniqueID from 'uuid/v4';
 
 function HooksToDo() {
   const initialTodos = [
@@ -16,10 +17,24 @@ function HooksToDo() {
     {id: 4, task: 'Pay bills', completed: false},
     {id: 5, task: 'Call parents', completed: false}
   ]
+ 
+  /* Behold, React hooks */
   const [ todos, setTodos ] = useState(initialTodos);
   const addTodo = newTodoText => {
-    setTodos( [...todos, {id: 6, task: newTodoText, completed: false}] );
-  }
+    setTodos( [...todos, {id: uniqueID(), task: newTodoText, completed: false}] );
+  };
+  const removeTodo = todoId => {
+    /* filer out removed to do item */
+    const updatedTodos = todos.filter( todo => todo.id !== todoId );
+    setTodos(updatedTodos);
+  };
+  const toggleTodo = todoId => {
+    const updatedTodos = todos.map( todo =>
+      todo.id === todoId ? {...todo, completed: !todo.completed} : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   return (
       <Paper style={{
           padding: 0,
@@ -42,7 +57,7 @@ function HooksToDo() {
         <Grid container justify={'center'} style={{marginTop: '1rem'}}> 
           <Grid item xs={11} md={8} lg={4}>
             <ToDoForm addTodo={addTodo} />
-            <ToDoList todos={todos} />
+            <ToDoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo}/>
           </Grid>
         </Grid>
       </Paper>
