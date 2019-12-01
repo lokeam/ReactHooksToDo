@@ -10,11 +10,11 @@ import Grid from '@material-ui/core/Grid';
 
 function HooksToDo() {
   const initialTodos = [
-    {id: 1, task: 'Exercise', completed: 'false'},
-    {id: 2, task: 'Push code to Github', completed: 'false'},
-    {id: 3, task: 'Purchase groceries', completed: 'false'},
-    {id: 4, task: 'Pay bills', completed: 'false'},
-    {id: 5, task: 'Call parents', completed: 'false'}
+    {id: 1, task: 'Exercise', completed: true},
+    {id: 2, task: 'Push code to Github', completed: true},
+    {id: 3, task: 'Purchase groceries', completed: true},
+    {id: 4, task: 'Pay bills', completed: false},
+    {id: 5, task: 'Call parents', completed: false}
   ]
   const [ todos, setTodos ] = useState(initialTodos);
   const addTodo = newTodoText => {
@@ -39,8 +39,12 @@ function HooksToDo() {
               <Typography color="inherit">Todo App using Hooks</Typography>
             </ToolBar>
         </AppBar>
-        <ToDoForm addTodo={addTodo} />
-        <ToDoList todos={todos} />
+        <Grid container justify={'center'} style={{marginTop: '1rem'}}> 
+          <Grid item xs={11} md={8} lg={4}>
+            <ToDoForm addTodo={addTodo} />
+            <ToDoList todos={todos} />
+          </Grid>
+        </Grid>
       </Paper>
   );
 }
