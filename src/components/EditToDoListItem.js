@@ -5,7 +5,9 @@ import TextField from '@material-ui/core/TextField';
 function EditToDoListItem( {id, task, editTodo, toggleEditItem} ) {
   const [ value, handleChange, reset ] = useInputState(task);
   return (
-    <form onSubmit={ (event) =>  {
+    <form
+      style={{marginLeft: `1rem`, width: `50%`}}
+      onSubmit={ (event) =>  {
       event.preventDefault();
       editTodo(id, value);
       reset();

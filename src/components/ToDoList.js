@@ -9,15 +9,18 @@ function ToDoList( {todos, removeTodo, toggleTodo, editTodo} ) {
   return (
     <Paper>
       <List>
-        {todos.map( todo => (
-          <ToDo task={todo.task}
-                key={todo.id}
-                id={todo.id}
-                completed={todo.completed}
-                removeTodo={removeTodo}
-                toggleTodo={toggleTodo}
-                editTodo={editTodo}
-          />
+        {todos.map( (todo, i) => (
+          <>
+            <ToDo task={todo.task}
+                  key={todo.id}
+                  id={todo.id}
+                  completed={todo.completed}
+                  removeTodo={removeTodo}
+                  toggleTodo={toggleTodo}
+                  editTodo={editTodo}
+            />
+           { i < todos.length - 1 && <Divider /> }
+          </>
         ))}
       </List>
     </Paper>
