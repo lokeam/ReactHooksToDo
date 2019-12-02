@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ToDoList from './components/ToDoList';
 import ToDoForm from './components/ToDoForm';
 
@@ -10,14 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import uniqueID from 'uuid/v4';
 
 function HooksToDo() {
-  const initialTodos = [
-    {id: 1, task: 'Exercise', completed: true},
-    {id: 2, task: 'Push code to Github', completed: true},
-    {id: 3, task: 'Purchase groceries', completed: true},
-    {id: 4, task: 'Pay bills', completed: false},
-    {id: 5, task: 'Call parents', completed: false}
-  ]
- 
+  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || '[]';
+
   /* Behold, React hooks */
   const [ todos, setTodos ] = useState(initialTodos);
   const addTodo = newTodoText => {
@@ -41,6 +35,10 @@ function HooksToDo() {
     setTodos(updatedTodos);
   }
 
+  /* local storage all the things */
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
       <Paper style={{
