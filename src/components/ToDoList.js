@@ -14,7 +14,6 @@ function ToDoList( {todos, removeTodo, toggleTodo, editTodo} ) {
             <>
               <ToDoListItem
                     {...todo}
-                    key={`{$i}-toDoListItem`}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     editTodo={editTodo}
