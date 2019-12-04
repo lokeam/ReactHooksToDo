@@ -10,9 +10,10 @@ import ToolBar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 
 function HooksToDo() {
-  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || '[]';
+  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [];
+  console.log('initialTodos: ', initialTodos);
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useToDoState(initialTodos);
-
+  console.log('HooksToDo, todos: ', todos);
   /* local storage all the things */
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos));

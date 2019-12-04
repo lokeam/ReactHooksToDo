@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDo from './ToDo.js';
+import ToDoListItem from './ToDoListItem.js';
 
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -12,8 +12,9 @@ function ToDoList( {todos, removeTodo, toggleTodo, editTodo} ) {
         <List>
           {todos.map( (todo, i) => (
             <>
-              <ToDo
+              <ToDoListItem
                     {...todo}
+                    key={`{$i}-toDoListItem`}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     editTodo={editTodo}
