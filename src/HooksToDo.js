@@ -9,6 +9,8 @@ import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 
+import { TodosProvider } from './context/todos.context';
+
 function HooksToDo() {
   const initialTodos = [{id: 1, task: "Learn React Hooks", completed: false}];
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useToDoState(initialTodos);
@@ -34,8 +36,10 @@ function HooksToDo() {
         </AppBar>
         <Grid container justify={'center'} style={{marginTop: '1rem'}}> 
           <Grid item xs={11} md={8} lg={4}>
-            <ToDoForm addTodo={addTodo} />
-            <ToDoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo}/>
+            <TodosProvider>
+              <ToDoForm addTodo={addTodo} />
+              <ToDoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo}/>
+            </TodosProvider>
           </Grid>
         </Grid>
       </Paper>
