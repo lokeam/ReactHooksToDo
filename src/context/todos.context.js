@@ -9,7 +9,7 @@ const defaultTodos = [
 export const TodosContext = createContext();
 
 export function TodosProvider(props) {
-  const todoMethods = useToDoState( defaultTodos);
+  const todoMethods = useToDoState(defaultTodos);
 
   return (
     <TodosContext.Provider value={ todoMethods }>
