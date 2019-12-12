@@ -1,4 +1,6 @@
-A simple CRUD app made with React Hooks (v16.8) built as a training exercise.
+A simple CRUD app made with React Hooks (useState, useEffect, useReducer and custom implemented) built as a training exercise using local storage to save user data.
+
+Initial styling bootstrapped with MaterialUI (this will change later).
 
 Bootstrapped with Create React App.
 
